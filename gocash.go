@@ -57,11 +57,9 @@ func (c *Cache) Set(key string, value interface{}) time.Time {
 // retrieval. The key will expire after the timeout.
 //
 // Returns the actual expiration deadline set in the cache.
-func (c *Cache) SetWithTimeout(
-	key string,
+func (c *Cache) SetWithTimeout(key string,
 	value interface{},
-	timeout time.Duration,
-) time.Time {
+	timeout time.Duration) time.Time {
 	return c.SetWithDeadline(key, value, time.Now().Add(timeout))
 }
 
@@ -70,11 +68,9 @@ func (c *Cache) SetWithTimeout(
 //
 // Returns the actual expiration deadline set in the cache. It should never
 // differ from the deadline passed as parameter.
-func (c *Cache) SetWithDeadline(
-	key string,
+func (c *Cache) SetWithDeadline(key string,
 	value interface{},
-	deadline time.Time,
-) time.Time {
+	deadline time.Time) time.Time {
 	if value == nil {
 		panic("cannot set nil value in cache")
 	}
