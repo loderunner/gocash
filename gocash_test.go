@@ -56,7 +56,11 @@ func TestSetWithTimeout(t *testing.T) {
 	d := c.SetWithTimeout("hello", "world", 100*time.Millisecond)
 	expectedDeadline := time.Now().Add(100 * time.Millisecond)
 	if d.After(expectedDeadline) {
-		t.Errorf("unexpected deadline: expected > %s, received  %s", expectedDeadline, d)
+		t.Errorf(
+			"unexpected deadline: expected > %s, received  %s",
+			expectedDeadline,
+			d,
+		)
 	}
 	v, d2 := c.Get("hello")
 	if d2 != d {
@@ -107,7 +111,11 @@ func TestDefaultTimeout(t *testing.T) {
 	d := c.Set("hello", "world")
 	expectedDeadline := time.Now().Add(100 * time.Millisecond)
 	if d.After(expectedDeadline) {
-		t.Errorf("unexpected deadline: expected > %s, received  %s", expectedDeadline, d)
+		t.Errorf(
+			"unexpected deadline: expected > %s, received  %s",
+			expectedDeadline,
+			d,
+		)
 	}
 	v, d2 := c.Get("hello")
 	if d2 != d {
@@ -130,7 +138,11 @@ func TestDefaultTimeout(t *testing.T) {
 	d = c.SetWithTimeout("hello", "world", 200*time.Millisecond)
 	expectedDeadline = time.Now().Add(200 * time.Millisecond)
 	if d.After(expectedDeadline) {
-		t.Errorf("unexpected deadline: expected > %s, received  %s", expectedDeadline, d)
+		t.Errorf(
+			"unexpected deadline: expected > %s, received  %s",
+			expectedDeadline,
+			d,
+		)
 	}
 	v, d2 = c.Get("hello")
 	if d2 != d {
@@ -162,7 +174,11 @@ func TestDefaultTimeout(t *testing.T) {
 	expectedDeadline = time.Now().Add(200 * time.Millisecond)
 	d = c.SetWithDeadline("hello", "world", expectedDeadline)
 	if d != expectedDeadline {
-		t.Errorf("unexpected deadline: expected > %s, received  %s", expectedDeadline, d)
+		t.Errorf(
+			"unexpected deadline: expected > %s, received  %s",
+			expectedDeadline,
+			d,
+		)
 	}
 	v, d2 = c.Get("hello")
 	if d2 != d {
